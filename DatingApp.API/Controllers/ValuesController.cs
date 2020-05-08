@@ -4,9 +4,10 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
 namespace DatingApp.API.Controllers
-{ [Route("api/[controller]")]
+{ 
+    [Route("api/[controller]")]
     [ApiController]
-    public class ValuesController : ControllerBase
+    public class ValuesController : ControllerBase // "ControllerBase" without view support; "Controller" with view support
     {
         private readonly DataContext _context;
 
