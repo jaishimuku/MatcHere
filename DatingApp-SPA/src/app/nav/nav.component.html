@@ -1,0 +1,51 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Dating App</a>
+
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item active">
+      <a class="nav-link" href="#">Matches</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Lists</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Messages</a>
+    </li>
+  </ul>
+
+  <div class="dropdown">
+    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Dropdown link
+    </a>
+  
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+      <a class="dropdown-item" href="#">Action</a>
+      <a class="dropdown-item" href="#">Another action</a>
+      <a class="dropdown-item" href="#">Something else here</a>
+    </div>
+  </div>
+
+  <!--
+    there are two types of forms tempalate and  responsive 
+    we using template form
+  -->
+  <form #loginForm="ngForm" class="form-inline my-2 my-lg-0" (ngSubmit) = "login()"> 
+    <input 
+      class="form-control mr-sm-2"
+      type="text" 
+      name= "username" 
+      placeholder="Username"
+      [(ngModel)]="model.username"
+      required>
+
+    <input 
+      class="form-control mr-sm-2" 
+      type="password" 
+      name="password" 
+      placeholder="Password" 
+      [(ngModel)]="model.password"
+      required>
+
+    <button [disabled]= "!loginForm.valid" class="btn btn-success my-2 my-sm-0" type="submit"> Login  </button>
+  </form>
+</nav>
