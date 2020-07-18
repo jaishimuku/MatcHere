@@ -11,25 +11,28 @@
     <li class="nav-item">
       <a class="nav-link" href="#">Messages</a>
     </li>
+    <li class="nav-item">
+      <a class="nav-link" (click)="logout()">LogOut</a>
+    </li>
   </ul>
 
-  <div class="dropdown">
-    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      Dropdown link
+  <div *ngIf= "loggedIn()" class="dropdown"> <!-- *ngIf completely remove all in this div if user is not logged in-->
+    <a class="dropdown-toggle text-light">
+      Welcome User
     </a>
   
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-      <a class="dropdown-item" href="#">Action</a>
-      <a class="dropdown-item" href="#">Another action</a>
-      <a class="dropdown-item" href="#">Something else here</a>
+    <div class="dropdown-menu"> 
+      <a class="dropdown-item" href="#"> <i class="fa fa-user"></i> Edit Profile</a>
+      <div class="dropdown-divider"></div>
+      <a class="dropdown-item" href="#">Logout</a>
     </div>
   </div>
 
   <!--
-    there are two types of forms tempalate and  responsive 
-    we using template form
+    there are two types of forms => tempalate and  responsive 
+    we using template form below
   -->
-  <form #loginForm="ngForm" class="form-inline my-2 my-lg-0" (ngSubmit) = "login()"> 
+  <form *ngIf= "!loggedIn()" #loginForm="ngForm" class="form-inline my-2 my-lg-0" (ngSubmit) = "login()"> 
     <input 
       class="form-control mr-sm-2"
       type="text" 
