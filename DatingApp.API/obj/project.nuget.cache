@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "5W0Qiqnhzz4VfpamWol9RELzWKSKUd9tI+3sjatdM49T9hZF/tCXLC00SokHbr8K/6NLvycUoqU+e2JmEfqo5A==",
+  "dgSpecHash": "IZmTWxdBnXzZp83OPrFlBV1DLMwSC6fySQwy9BY0hY2J6ke6YHu/B3u5IOeE9vnoZKHZHj9RTxpHt0CQYO8gEQ==",
   "success": true,
   "projectFilePath": "/Users/muku/Documents/DatingApp/DatingApp.API/DatingApp.API.csproj",
   "expectedPackageFiles": [
@@ -86,7 +86,9 @@
     "/Users/muku/.nuget/packages/system.threading.tasks.extensions/4.5.2/system.threading.tasks.extensions.4.5.2.nupkg.sha512",
     "/Users/muku/.nuget/packages/system.xml.readerwriter/4.3.0/system.xml.readerwriter.4.3.0.nupkg.sha512",
     "/Users/muku/.nuget/packages/system.xml.xdocument/4.3.0/system.xml.xdocument.4.3.0.nupkg.sha512",
-    "/Users/muku/.nuget/packages/system.xml.xmldocument/4.3.0/system.xml.xmldocument.4.3.0.nupkg.sha512"
+    "/Users/muku/.nuget/packages/system.xml.xmldocument/4.3.0/system.xml.xmldocument.4.3.0.nupkg.sha512",
+    "/Users/muku/.nuget/packages/microsoft.netcore.app.ref/3.0.0/microsoft.netcore.app.ref.3.0.0.nupkg.sha512",
+    "/Users/muku/.nuget/packages/microsoft.aspnetcore.app.ref/3.0.1/microsoft.aspnetcore.app.ref.3.0.1.nupkg.sha512"
   ],
   "logs": []
 }
