@@ -14,7 +14,7 @@ export class MemberListResolver implements Resolve<User[]> {
         // tslint:disable-next-line: no-string-literal
         return this.userService.getUsers().pipe(
             catchError(error => {
-                this.alertify.error('Problrm retriving data');
+                this.alertify.error('Problem retriving data');
                 this.router.navigate(['/home']);
                 return of(null);
             })
