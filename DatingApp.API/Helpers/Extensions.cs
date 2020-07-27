@@ -12,7 +12,7 @@ namespace DatingApp.API.Helpers
             response.Headers.Add("Access-Control-Allow-Origin", "*");
         }
 
-        public static int CalculateAge(this DateTime theDateTime)
+        public static int CalculateAge(this DateTime theDateTime) // thsi is to calculate the age of user "Customise"
         {
             var age = DateTime.Today.Year - theDateTime.Year;
 

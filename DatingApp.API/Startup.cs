@@ -41,7 +41,9 @@ namespace DatingApp.API
                 Newtonsoft.Json.ReferenceLoopHandling.Ignore;
             });
             services.AddCors();
+            services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
             services.AddAutoMapper(typeof(DatingRepository).Assembly);
+            services.AddTransient<Seed>();
             services.AddScoped<IAuthRepository, AuthRepository>(); // service is created once per request; one instance per HTTP request and used in another request
             services.AddScoped<IDatingRepository, DatingRepository>();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

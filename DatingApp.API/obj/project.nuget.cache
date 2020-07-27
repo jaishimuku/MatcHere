@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "91n93ADca2j/Y2r581JYQtxNwAh65mqikIhdywzttGIz4A/HrUnhFuuZWvl5BCV9Zjhu+HsOaR39Eqd18UOcCw==",
+  "dgSpecHash": "SIVeuMgfo6JBa2XD+Qm/HXV63x5GSbTIGPKreOUd2BkXmFs/InqZQHbplRESQyVnkQcAFsrzOBy3QllzFj7r6Q==",
   "success": true,
   "projectFilePath": "/Users/muku/Documents/DatingApp/DatingApp.API/DatingApp.API.csproj",
   "expectedPackageFiles": [
     "/Users/muku/.nuget/packages/automapper/9.0.0/automapper.9.0.0.nupkg.sha512",
     "/Users/muku/.nuget/packages/automapper.extensions.microsoft.dependencyinjection/7.0.0/automapper.extensions.microsoft.dependencyinjection.7.0.0.nupkg.sha512",
+    "/Users/muku/.nuget/packages/cloudinarydotnet/1.11.0/cloudinarydotnet.1.11.0.nupkg.sha512",
     "/Users/muku/.nuget/packages/microsoft.aspnetcore.authentication.jwtbearer/3.0.0/microsoft.aspnetcore.authentication.jwtbearer.3.0.0.nupkg.sha512",
     "/Users/muku/.nuget/packages/microsoft.aspnetcore.jsonpatch/3.0.0/microsoft.aspnetcore.jsonpatch.3.0.0.nupkg.sha512",
     "/Users/muku/.nuget/packages/microsoft.aspnetcore.mvc.newtonsoftjson/3.0.0/microsoft.aspnetcore.mvc.newtonsoftjson.3.0.0.nupkg.sha512",
