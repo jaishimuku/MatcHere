@@ -17,6 +17,9 @@
     </ul>
   
     <div *ngIf= "loggedIn()"  class="dropdown" dropdown> <!-- *ngIf completely remove all in this div if user is not logged in-->
+      <span class="mr-1">
+        <img src= "{{photoUrl}}" alt="">
+      </span>
       <a class="dropdown-toggle text-light" dropdownToggle>
         Welcome {{ authService.decodedToken?.unique_name | titlecase}}
       </a>
