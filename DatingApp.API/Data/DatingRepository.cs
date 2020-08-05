@@ -121,14 +121,43 @@ namespace DatingApp.API.Data
            
         }
 
-        public Task<PagedList<Message>> GetMessagesForUser()
+        public async Task<PagedList<Message>> GetMessagesForUser(MessageParams messageParams)
         {
-            throw new NotImplementedException();
+            var messages = _context.Messages
+                .Include(u => u.Sender).ThenInclude( p => p.Photos)
+                .Include( u => u.Recipient).ThenInclude(p => p.Photos)
+                .AsQueryable();
+            
+            switch(messageParams.MessageContainer)
+            {
+                case "Inbox":
+                    messages = messages.Where(u => u.RecipientId == messageParams.UserId);
+                    break;
+
+                case "Outbox":
+                    messages = messages.Where(u => u.SenderId == messageParams.UserId);
+                    break;
+                default:
+                    messages = messages.Where(u => u.RecipientId == messageParams.UserId && u.IsRead == false);
+                    break;
+
+            }
+            messages = messages.OrderByDescending(d => d.MessageSent);
+            return await PagedList<Message>.CreatedAsync(messages, 
+                messageParams.PageNumber, messageParams.PageSize);
         }
 
-        public  Task<IEnumerable<Message>> GetMessagesThread(int userId, int recipientId)
+        public async Task<IEnumerable<Message>> GetMessagesThread(int userId, int recipientId)
         {
-             throw new NotImplementedException();
+             var messages = await _context.Messages
+                .Include(u => u.Sender).ThenInclude( p => p.Photos)
+                .Include( u => u.Recipient).ThenInclude(p => p.Photos)
+                .Where(m => m.RecipientId == userId && m.SenderId == recipientId 
+                    || m.RecipientId == recipientId && m.SenderId == userId) // returns conversation between two users
+                .OrderByDescending(m => m.MessageSent)
+                .ToListAsync();
+
+            return messages;
         }
     }
 }
