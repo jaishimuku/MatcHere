@@ -11,11 +11,12 @@ import { MemberEditComponent } from './members/member-edit/member-edit.component
 import { MemberEditResolver } from './_resolver/member-edit.resolver';
 import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
 import { ListsResolver } from './_resolver/lists.resolver';
+import { MessagesResolver } from './_resolver/messages.resolver';
 
 export const appRoutes: Routes = [
     { path: '', component: HomeComponent },
     {
-        path: '', //localhost:4200/
+        path: '', // localhost:4200
         runGuardsAndResolvers: 'always',
         canActivate: [AuthGuard],
         children: [
@@ -25,7 +26,7 @@ export const appRoutes: Routes = [
                 user: MemberDetailResolver}},
             { path: 'member/edit', component: MemberEditComponent, resolve: {
                 user: MemberEditResolver},  canDeactivate: [PreventUnsavedChanges]},
-            { path: 'messages', component: MessagesComponent},
+            { path: 'messages', component: MessagesComponent, resolve: { messages: MessagesResolver} },
             { path: 'lists', component: ListsComponent, resolve: {users: ListsResolver}},
         ]
     },
