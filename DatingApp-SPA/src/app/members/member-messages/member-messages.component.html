@@ -12,7 +12,7 @@
                     </span>
                     <div class="chat-body">
                         <div class="header">
-                            <strong class="primary-font">{{message.senderKnownAs}}</strong>
+                            <strong class="primary-font float-left">{{message.senderKnownAs}}</strong>
                             <small class="text-muted float-right">
                                 <span class="fa fa-clock-o">{{message.messageSent | timeago}}</span>
                             </small>
@@ -27,12 +27,12 @@
                     </span>
                     <div class="chat-body">
                         <div class="header">
+                            <strong class="primary-font float-right">{{message.senderKnownAs}}</strong>
                             <small class="text-muted">
                                 <span class="fa fa-clock-o">{{message.messageSent | timeago}}</span>
-                                <span *ngIf= "!message.isRead" class="text-danger">(unread)</span>
+                                <span *ngIf= "!message.isRead" class="text-danger">(Unread) meme</span>
                                 <span *ngIf= "message.isRead" class="text-success">(Read {{message.dateRead | timeago}})</span>
                             </small>
-                            <strong class="primary-font float-right">{{message.senderKnownAs}}</strong>
                         </div>
                         <p>{{message.content}}</p>
                     </div>
@@ -42,11 +42,16 @@
 
     </div>
     <div class="card-footer">
-        <form action="">
+        <form #messageForm="ngForm" (ngSubmit)= "messageForm.valid && sendMessage()">
             <div class="input-group">
-                <input type="text" class="form-control input-sm" placeholder="send a private messaage">
+                <input type="text" 
+                    [(ngModel)]= "newMessage.content"
+                    name="content"
+                    required
+                    class="form-control input-sm" 
+                    placeholder="send a private messaage">
                 <div class="input-group-append">
-                    <button class="btn btn-primary">Send</button>
+                    <button class="btn btn-primary" [disabled] ="!messageForm.valid">Send</button>
                 </div>
             </div>
         </form>
