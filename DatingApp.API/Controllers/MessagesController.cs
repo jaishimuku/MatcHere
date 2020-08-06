@@ -63,6 +63,7 @@ namespace DatingApp.API.Controllers
         {
             if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value)) // checks is user current  checks token, needs to match token
                         return Unauthorized();
+
             var messagesFromRepo = await _repo.GetMessagesThread(userId, recipientId);
 
             var messageThread = _mapper.Map<IEnumerable<MessageToReturnDto>>(messagesFromRepo);
@@ -123,6 +124,25 @@ namespace DatingApp.API.Controllers
 
             throw new Exception("Error deleting the message");
 
+        }
+
+        [HttpPost("{id}/read")]
+        public async Task<IActionResult> MarkMessageRead(int id, int userId)  // we can do this inside GetMessageThread
+        {
+            if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value)) // checks is user current  checks token, needs to match token
+                return Unauthorized();
+            
+            var message = await _repo.GetMessage(id);
+
+            if (message.RecipientId != userId)
+                return Unauthorized();
+            
+            message.IsRead = true;
+            message.DateRead = DateTime.Now;
+
+            await _repo.SaveAll();
+
+            return NoContent();
         }
     }
 }
