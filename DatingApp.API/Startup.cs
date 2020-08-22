@@ -32,24 +32,10 @@ namespace DatingApp.API
 
         public IConfiguration Configuration { get; }
 
-        public void ConfigureDevelopmentServices( IServiceCollection services) 
-        {
-            services.AddDbContext<DataContext>(x => x.UseSqlite
-                (Configuration.GetConnectionString("DataContext")));
-
-            ConfigureServices(services);
-        }
-
-        public void ConfigureProductionServices( IServiceCollection services) 
-        {
-            services.AddDbContext<DataContext>(x => x.UseMySql
-                (Configuration.GetConnectionString("DataContext")));
-
-            ConfigureServices(services);
-        }
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<DataContext>(x => x.UseSqlite(Configuration.GetConnectionString("DataContext")));
             services.AddControllers().AddNewtonsoftJson( opt => {
                 opt.SerializerSettings.ReferenceLoopHandling =
                 Newtonsoft.Json.ReferenceLoopHandling.Ignore;
@@ -101,19 +87,15 @@ namespace DatingApp.API
            // app.UseHttpsRedirection();
 
             app.UseRouting();
+            app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()); // we can make only for one http "With("Client")"
+
 
             app.UseAuthentication();
             app.UseAuthorization();
             
-            app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()); // we can make only for one http "With("Client")"
-
-            app.UseDefaultFiles(); //looks index.html file inside wwwroot file
-            app.UseStaticFiles();
-           
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-                endpoints.MapFallbackToController("Index", "FallBack");
             });
         }
     }
